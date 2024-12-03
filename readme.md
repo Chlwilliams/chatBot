@@ -20,7 +20,7 @@ An in-depth paragraph about your project and overview of use.
 * .\chatbot\Scripts\activate.ps1 
 <img src="./pictures/example.png" alt="">
    (Note terminal should show AI environment)
-* pip install langchain langchain-ollama ollama streamlit streamlit_chat
+* pip install -r requirements.txt
 ### Executing program
 (In File)
     (See picture above)
