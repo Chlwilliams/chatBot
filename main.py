@@ -1,43 +1,50 @@
-import streamlit as st
+from streamlit_chat import message
 
+from langchain_ollama import OllamaLLM
+
+
+def updateHistory(userHistory, botHistory):
+    if userHistory:
+        for i in range(len(userHistory)):
+            message(userHistory[i], is_user=True)
+            message(botHistory[i]) 
+            
 
 def main():
-#makes userHistory & botHistory (if they don't exist) 
     if 'userHistory' not in st.session_state:
         st.session_state.userHistory = []
-
     if 'botHistory' not in st.session_state:
         st.session_state.botHistory = []
+    botOutput = ""
 
-    
-    st.title("Chat Bot App")
 
-# grabs userInput & adds to history (if its != None)
-    userInput = st.chat_input()
-    if userInput:
-        st.session_state.userHistory.append(userInput)
-        print(userInput)
+     
+    with st.form(key="chat"):
+        model = OllamaLLM(model="llama3")
 
-        userInputLower = userInput.lower()
+        st.title("Chatbot :)")
+        message("""Welcome to (CHRISTIAN) Team Chat bot. To stop using
+                 this AI chat bot type quit""")
+        
+        
 
-#simple testing of bot responses
-        if 'how are you doing' in userInputLower:
-            st.session_state.botHistory.append("Im good thanks!")
-        else:
-            st.session_state.botHistory.append("I don't really get what you're trying to say. Please try again.")
+        userInput = st.text_input(" ")
+        submit = st.form_submit_button("Submit")
+        if submit:
+            st.session_state.userHistory.append(userInput)
+            try:
+                botOutput = model.invoke(input=userInput)
+                st.session_state.botHistory.append(botOutput)
+            except:
+                botOutput = "Something is wrong with my brian. Try again when I am fixed."
+                st.session_state.botHistory.append(botOutput)
+                
 
-#wwrites out history will remove try/except later (had for debugging purposes)
-    try:
-        if userInput:
-            with st.expander("History"):
-                for i in range(len(st.session_state.userHistory)):
-                    st.write('User: "',st.session_state.userHistory[i],'"')
-                    st.write('Bot: "',st.session_state.botHistory[i],'"')
-    except:
-        print(st.error(st.session_state.userHistory))
-        print(st.error(st.session_state.botHistory))
-    
+            updateHistory(st.session_state.userHistory, st.session_state.botHistory)
+
+
 
 
 if __name__ == "__main__":
     main()
+
