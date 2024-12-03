@@ -11,6 +11,7 @@ An in-depth paragraph about your project and overview of use.
 * Describe any prerequisites, libraries, OS version, etc., needed before installing program.
 * Windows 10
 * Ollama3 - https://ollama.com/download
+* Python
 
 ### Installing
 * After downloading Ollama3
@@ -25,17 +26,9 @@ An in-depth paragraph about your project and overview of use.
     (See picture above)
 * Ensure you are in AI environment
 * Enter: streamlit run main.py
-```
-code blocks for commands
-```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
 
 ## Authors
 
 Contributors names and contact info
+* Christian Williams
+* Christian Hernandez
