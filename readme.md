@@ -44,8 +44,6 @@ To get started, ensure your system meets the following prerequisites:
    ```bash
    streamlit run main.py
 
-   ## Authors
-
 The chatbot project was developed by the following contributors:
 
 - **Christian Williams** 
