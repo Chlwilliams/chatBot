@@ -19,8 +19,8 @@ An in-depth paragraph about your project and overview of use.
 * python -m venv chatbot
 * .\chatbot\Scripts\activate.ps1 
 <img src="./pictures/example.png" alt="">
- *  (Note terminal should show AI environment)
- *  pip install -r requirements.txt
+* (Note terminal should show AI environment)
+*  pip install -r requirements.txt
 ### Executing program
 (In File)
     (See picture above)
